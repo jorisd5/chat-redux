@@ -7,10 +7,11 @@ import { createStore, combineReducers } from 'redux';
 // internal modules
 import App from './components/app';
 import '../assets/stylesheets/application.scss';
+import MessagesReducer from './reducers/messages_reducer';
 
 // State and reducers
 const reducers = combineReducers({
-  changeMe: (state = null, action) => state
+  messages: MessagesReducer
 });
 
 // render an instance of the component in the DOM

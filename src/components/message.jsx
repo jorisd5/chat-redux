@@ -1,8 +1,8 @@
 import React from 'react';
-import { emojify } from 'react-emojify';
+import { emojify } from 'react-emojione';
 
 const Message = (props) => {
-  const { createdAt, author, content} = props.message;
+  const { createdAt, author, content } = props.message;
   const time = new Date(createdAt).toLocaleTimeString();
   return (
     <div className="message-container">

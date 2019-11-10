@@ -4,4 +4,19 @@ body {
 .app {
   margin-top: 20px;
   margin-bottom: 20px;
+  padding-left: 20px;
+  display: flex;
+  .channelList {
+    width: 30%;
+  }
+  .messageList {
+    width: 70%;
+    .messageListHeader {
+      border-bottom: 1px solid black;
+    }
+    .message-container {
+
+    }
+  }
+
 }
