@@ -19,9 +19,9 @@ const initialState = {
   ]
 };
 
-export default function setMessages() {
+export function setMessages() {
   return {
-    type: 'FETCH_MESSAGES',
+    type: "FETCH_MESSAGES",
     payload: initialState.messages
   };
 }

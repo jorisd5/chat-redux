@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import setMessages from '../actions/index';
+import { setMessages } from '../actions/index';
 
 import Message from '../components/message';
 
@@ -11,9 +11,9 @@ class MessageList extends Component {
   }
 
   renderList() {
-    return this.props.messages.map((message) => {
+    return this.props.messages.map((chatMessage) => {
       return (
-        <Message key={message.created_at} message={message} />
+        <Message key={chatMessage.created_at} message={chatMessage} />
       );
     });
   }
@@ -30,17 +30,16 @@ class MessageList extends Component {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ setMessages }, dispatch);
+}
+
 function mapStateToProps(state) {
+  debugger
   return {
-    messages: state
+    messages: state.messages
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(
-    { setMessages },
-    dispatch
-  );
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageList);

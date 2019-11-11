@@ -1,7 +1,10 @@
 
-export default function(state = null, action) {
+export default function(state, action) {
+  if (state === undefined) {
+    return [];
+  }
   switch (action.type) {
-    case 'FETCH_MESSAGES':
+    case "FETCH_MESSAGES":
       return action.payload;
     default:
       return state;
