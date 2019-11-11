@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import fetchMessages from '../actions/index';
+import createMessage from '../actions/index';
 
-import Message from '../components/message';
-
-class MessageList extends Component {
+class MessageForm extends Component {
   componentWillMount() {
-    this.fetchMessages();
+    this.createMessage();
   }
 
-  fetchMessages = () => {
-    this.props.fetchMessages('general');
+  createMessage = () => {
+    this.props.createMessage('general', author, content);
   }
 
   renderList() {
@@ -37,7 +35,7 @@ class MessageList extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchMessages }, dispatch);
+  return bindActionCreators({ createMessage }, dispatch);
 }
 
 function mapStateToProps(state) {
@@ -47,4 +45,5 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(MessageList);
+export default connect(mapStateToProps, mapDispatchToProps)(MessageForm);
+

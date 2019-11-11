@@ -1,27 +1,40 @@
-// TODO: add and export your own actions
-const initialState = {
-  currentUser: `anonymous${Math.floor(10 + (Math.random() * 90))}`,
-  // prompt("What is your username?") ||
-  selectedChannel: 'general',
-  channels: ['general', 'react', 'paris'],
-  messages:
-  [
-    {
-      author: "anonymous92",
-      content: "Hello world!",
-      created_at: "2017-09-26T23:03:16.365Z"
-    },
-    {
-      author: "anonymous77",
-      content: "My name is anonymous77",
-      created_at: "2017-09-26T23:03:21.194Z"
-    }
-  ]
-};
+const BASE_URL = 'https://wagon-chat.herokuapp.com';
 
-export function setMessages() {
+export const FETCH_MESSAGES = 'FETCH_MESSAGES';
+export const POST_MESSAGE = 'POST_MESSAGE';
+export const CHANNEL_SELECTED = 'CHANNEL_SELECTED';
+
+export default function fetchMessages(channel) {
+  const url = `${BASE_URL}/${channel}/messages`;
+  const promise = fetch(url).then(r => r.json());
+
   return {
-    type: "FETCH_MESSAGES",
-    payload: initialState.messages
+    type: FETCH_MESSAGES,
+    payload: promise
+  };
+}
+
+export function createMessage(channel, author, content) {
+  const url = `${BASE_URL}/${channel}/messages`;
+  const body = { author, content };
+  const promise = fetch(url, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(body)
+  }).then(r => r.json());
+
+  return {
+    type: POST_MESSAGE,
+    payload: promise
+  };
+}
+
+export function selectChannel(channel) {
+  return {
+    type: CHANNEL_SELECTED,
+    payload: channel
   };
 }
