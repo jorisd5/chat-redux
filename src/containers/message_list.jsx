@@ -4,10 +4,19 @@ import { connect } from 'react-redux';
 import fetchMessages from '../actions/index';
 
 import Message from '../components/message';
+import MessageForm from '../containers/message_form';
 
 class MessageList extends Component {
   componentWillMount() {
     this.fetchMessages();
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(this.fetchMessages, 5000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   fetchMessages = () => {
@@ -31,6 +40,7 @@ class MessageList extends Component {
         <div className="channel-container">
           {this.renderList()}
         </div>
+        <MessageForm />
       </div>
     );
   }
