@@ -9,6 +9,10 @@ class MessageForm extends Component {
     this.state = { value: '' };
   }
 
+  componentDidMount() {
+    this.messagebox.focus();
+  }
+
   handleChange = (event) => {
     this.setState({ value: event.target.value });
   }
@@ -23,7 +27,7 @@ class MessageForm extends Component {
     return (
       <form onSubmit={this.handleSubmit} className="channel-editor">
         <input
-          // ref={(input) => { this.messagebox = input; }}
+          ref={(input) => { this.messagebox = input; }}
           type="text"
           className="form-control"
           autoComplete="off"

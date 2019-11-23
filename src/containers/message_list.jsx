@@ -15,6 +15,10 @@ class MessageList extends Component {
     this.interval = setInterval(this.fetchMessages, 5000);
   }
 
+  componentDidUpdate() {
+    this.list.scrollTop = this.list.scrollHeight;
+  }
+
   componentWillUnmount() {
     clearInterval(this.interval);
   }
@@ -37,7 +41,7 @@ class MessageList extends Component {
         <div className="messageListHeader">
           <h1>Channel</h1>
         </div>
-        <div className="channel-container">
+        <div className="channel-container" ref={(list) => { this.list = list; }}>
           {this.renderList()}
         </div>
         <MessageForm />

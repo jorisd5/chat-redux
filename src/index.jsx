@@ -39,9 +39,9 @@ const initialState = {
 // State and reducers
 const reducers = combineReducers({
   messages: messagesReducer,
+  channels: identityReducer,
   currentUser: identityReducer,
   selectedChannel: selectedChannelReducer
-
 });
 
 const middlewares = applyMiddleware(reduxPromise, logger);
