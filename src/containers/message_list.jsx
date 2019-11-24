@@ -24,7 +24,7 @@ class MessageList extends Component {
   }
 
   fetchMessages = () => {
-    this.props.fetchMessages('general');
+    this.props.fetchMessages(this.props.channel);
   }
 
   renderList() {
@@ -56,7 +56,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    messages: state.messages
+    messages: state.messages,
+    channel: state.selectedChannel
   };
 }
 

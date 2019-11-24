@@ -6,6 +6,7 @@ import { selectChannel } from '../actions/index';
 class ChannelList extends Component {
   handleClick = (channel) => {
     this.props.selectChannel(channel);
+
   }
 
   renderChannelList = (channel) => {
